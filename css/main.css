@@ -57,18 +57,6 @@ body
     margin: 10px;
 }
 
-#accnt-box .row {
-    margin: 0px;
-}
-
-#accnt-box .form .input {
-    display: inline;
-}
-#accnt-box .form input.textbox {
-    width: 120px;
-    margin-right: 10px;
-}
-
 #mainmenu
 {
     /*

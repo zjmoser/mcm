@@ -1,0 +1,35 @@
+div.login-box {
+}
+
+div.login-box .row {
+}
+
+div.login-box .input {
+    display: inline;
+}
+
+div.login-box input.textbox {
+    width: 100px;
+    margin: 0px;
+    padding: 2px;
+}
+
+div.login-box input.textbox[type="text"] {
+    margin-right: 10px;
+}
+
+div.login-box input[type="checkbox"] {
+    margin: 5px 0px 0px 0px;
+}
+
+div.login-box .rememberMe {
+    color: #FFFFFF;
+}
+
+.lfloat {
+    float: left;
+}
+
+.rfloat {
+    float: right;
+}

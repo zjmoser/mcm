@@ -1,12 +1,13 @@
 <?php
 
 /**
- * UserLogin is a Widget containing a log in form.
+ * LoginBox is a Widget containing a log in form.
  */
-class UserLogin extends CWidget
+class LoginBox extends CWidget
 {
     public function init()
     {
+        $this->publishAssets();
     }
 
     public function run()
@@ -23,7 +24,6 @@ class UserLogin extends CWidget
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
-            Yii::app()->session['username'] = $model->username;
 
 			if($model->validate() && $model->login())
                 unset(Yii::app()->session['username']);
@@ -34,9 +34,17 @@ class UserLogin extends CWidget
 
 		}
 
-        $model->username = Yii::app()->session['username'];
-
 		// display the login form
-		$this->render('userLogin',array('model'=>$model));
+		$this->render('loginBox',array('model'=>$model));
+    }
+
+    protected function publishAssets()
+    {
+        $am = Yii::app()->getAssetManager();
+        $assetDir = dirname(__FILE__).DIRECTORY_SEPARATOR.'assets';
+        $assetUrl = $am->publish($assetDir);
+
+        $cs = Yii::app()->clientScript;
+        $cs->registerCssFile($assetUrl.DIRECTORY_SEPARATOR.'loginBox.css');
     }
 }

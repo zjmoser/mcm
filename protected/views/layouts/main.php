@@ -33,7 +33,7 @@
                 ?>
             </div>
             <div id="accnt-box">
-                <?php if(Yii::app()->user->isGuest) $this->widget('UserLogin'); ?>
+                <?php if(Yii::app()->user->isGuest) $this->widget('LoginBox'); ?>
             </div>
             <div id="mainmenu">
                 <?php $this->widget('zii.widgets.CMenu',array(

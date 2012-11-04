@@ -1,14 +1,12 @@
 
-<div class="form">
+<div class="login-box form">
     <?php $form=$this->beginWidget('CActiveForm', array(
         'id'=>'login-form',
         'enableClientValidation'=>true,
         'clientOptions'=>array(
             'validateOnSubmit'=>true,
         ),
-    ));
-
-    echo $form->errorSummary($model); ?>
+    )); ?>
 
 	<div class="row">
 		<?php #echo $form->labelEx($model,'username'); ?>
