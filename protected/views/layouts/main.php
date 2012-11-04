@@ -33,39 +33,39 @@
                 ?>
             </div>
             <div id="accnt-box">
-                <?php if(Yii::app()->user->isGuest) $this->widget('LoginBox'); ?>
+                <?php #if(Yii::app()->user->isGuest) $this->widget('LoginBox'); ?>
             </div>
             <div id="mainmenu">
                 <?php $this->widget('zii.widgets.CMenu',array(
                     'items'=>array(
                         array(
-                            'label'=>'Home',
+                            'label'=>'HOME',
                             'url'  =>array('/site/index'),
                         ),
                         array(
-                            'label'=>'About',
+                            'label'=>'ABOUT',
                             'url'  =>array('/site/page',
                             'view' =>'about')
                         ),
                         array(
-                            'label'=>'Participate',
-                            'url'=>array('/site/participate')
+                            'label'=>'INVEST',
+                            'url'=>array('/site/invest')
                         ),
                         array(
-                            'label'=>'Entrepreneur',
+                            'label'=>'ENTREPRENEUR',
                             'url'=>array('/site/entrepreneur')
                         ),
                         array(
-                            'label'=>'Contact',
+                            'label'=>'CONTACT',
                             'url'=>array('/site/contact')
                         ),
                         array(
-                            'label'=>'Disclaimer',
+                            'label'=>'DISCLAIMER',
                             'url'=>array('/site/page',
                             'view'=>'disclaimer')
                         ),
                         array(
-                            'label'=>'Login',
+                            'label'=>'LOGIN',
                             'url'=>array('/site/login'),
                             'visible'=>Yii::app()->user->isGuest
                         ),
@@ -75,7 +75,6 @@
                             'visible'=>!Yii::app()->user->isGuest
                         )
                     ),
-                    'htmlOptions'=>array('class'=>'container'),
                     'itemCssClass'=>'nav-option',
                 )); ?>
             </div><!-- mainmenu -->

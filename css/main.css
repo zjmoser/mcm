@@ -22,7 +22,9 @@ body
 
 #main {
 	background: white;
-	border: 1px solid #C9E0ED;
+	border-left: 1px solid #C9E0ED;
+	border-right: 1px solid #C9E0ED;
+	border-bottom: 1px solid #C9E0ED;
 }
 
 #content
@@ -48,7 +50,7 @@ body
 {
     float: left;
     position: relative;
-    top: 15px;
+    top: 12.5px;
 }
 
 #accnt-box
@@ -59,37 +61,43 @@ body
 
 #mainmenu
 {
-    /*
-	background: transparent url(navbg.png) repeat-x left top;
-    */
 }
 
 #mainmenu ul
 {
-	margin: 0px auto;
+    float: right;
+	margin: 49px 0 0 0;
     padding: 0px;
     list-style-type: none;
 }
 
 #mainmenu ul li
 {
-    float: right;
+    display: inline-block;
+    float: left;
+    padding: 6px 8px 5px 8px;
+    margin: 0px 2px;
+    color: #ffffff;
+    line-height: 16px;
+    /*
+    border-radius: 10px 10px 0 0;
+    */
+}
+
+#mainmenu ul li:hover, #mainmenu ul li.active
+{
+	color: #162D50;
+	background-color:#FFFFFF;
+	text-decoration:none;
 }
 
 #mainmenu ul li a
 {
-	color:#ffffff;
+    color: inherit;
 	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	padding:5px 8px;
-}
-
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #6399cd;
-	background-color:#EFF4FA;
+    font-family: "Eras Medium ITC", Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
 	text-decoration:none;
 }
 

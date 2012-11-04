@@ -40,7 +40,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','error','contact','login','logout'),
+				'actions'=>array('index','page','error','contact','login','logout'),
 				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
