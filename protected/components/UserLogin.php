@@ -5,15 +5,19 @@
  */
 class UserLogin extends CWidget
 {
-    #public $title='Login';
-
     public function init()
     {
     }
 
     public function run()
     {
-        $model = new LoginForm;
+        $model = Yii::app()->session['model'];
+
+        // If no stored model, create a new one.
+        if (!isset($model))
+            $model = new LoginForm;
+        else
+            unset(Yii::app()->session['model']);
 
 		// collect user input data
 		if(isset($_POST['LoginForm']))
@@ -23,8 +27,11 @@ class UserLogin extends CWidget
 
 			if($model->validate() && $model->login())
                 unset(Yii::app()->session['username']);
+            else
+                Yii::app()->session['model'] = $model;
 
             $this->controller->refresh();
+
 		}
 
         $model->username = Yii::app()->session['username'];
