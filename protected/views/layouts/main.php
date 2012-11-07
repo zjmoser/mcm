@@ -91,6 +91,9 @@
 
         <?php echo $content; ?>
 
+        <div id="sidebar">
+        </div>
+
         <div class="clear"></div>
 
         <div id="footer">

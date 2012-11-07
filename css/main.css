@@ -26,11 +26,6 @@ body
 	background: #FFFFFF;
 }
 
-#content
-{
-    padding: 20px;
-}
-
 #mission-statement
 {
     margin: 15px  auto;
@@ -39,13 +34,26 @@ body
     font: normal 12pt "Eras Medium ITC" "Helvetica" sans-serif;
 }
 
+#content
+{
+    float: left;
+    min-height: 800px;
+    padding: 20px;
+    width: 690px;
+    border: 1px solid red;
+}
+
 #sidebar
 {
-	padding: 20px 20px 20px 0;
+    float: right;
+    min-height: 800px;
+    width: 250px;
+    border: 1px solid green;
 }
 
 #footer
 {
+    clear: both;
 	padding: 10px;
 	margin: 10px 20px;
 	font-size: 0.8em;
