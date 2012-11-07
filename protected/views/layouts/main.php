@@ -23,72 +23,71 @@
 <body>
 
 <div id="page">
-
 	<div id="header">
-        <div class="container">
-            <div id="logo">
-                <?php
-                $imghtml = CHtml::image('/css/title.png', 'Moser Capital Management');
-                echo CHtml::link($imghtml, array('/site/index'))
-                ?>
-            </div>
-            <div id="accnt-box">
-                <?php #if(Yii::app()->user->isGuest) $this->widget('LoginBox'); ?>
-            </div>
-            <div id="mainmenu">
-                <?php $this->widget('zii.widgets.CMenu',array(
-                    'items'=>array(
-                        array(
-                            'label'=>'HOME',
-                            'url'  =>array('/site/index'),
-                        ),
-                        array(
-                            'label'=>'ABOUT',
-                            'url'  =>array('/site/page',
-                            'view' =>'about')
-                        ),
-                        array(
-                            'label'=>'INVEST',
-                            'url'=>array('/site/invest')
-                        ),
-                        array(
-                            'label'=>'ENTREPRENEUR',
-                            'url'=>array('/site/entrepreneur')
-                        ),
-                        array(
-                            'label'=>'CONTACT',
-                            'url'=>array('/site/contact')
-                        ),
-                        array(
-                            'label'=>'DISCLAIMER',
-                            'url'=>array('/site/page',
-                            'view'=>'disclaimer')
-                        ),
-                        array(
-                            'label'=>'LOGIN',
-                            'url'=>array('/site/login'),
-                            'visible'=>Yii::app()->user->isGuest
-                        ),
-                        array(
-                            'label'=>'Logout ('.Yii::app()->user->name.')',
-                            'url'=>array('/site/logout'),
-                            'visible'=>!Yii::app()->user->isGuest
-                        )
+        <div id="logo">
+            <?php
+            $imghtml = CHtml::image('/css/title.png', 'Moser Capital Management');
+            echo CHtml::link($imghtml, array('/site/index'))
+            ?>
+        </div>
+        <div id="accnt-box">
+            <?php #if(Yii::app()->user->isGuest) $this->widget('LoginBox'); ?>
+        </div>
+        <div id="mainmenu">
+            <?php $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
+                    array(
+                        'label'=>'HOME',
+                        'url'  =>array('/site/index'),
                     ),
-                    'itemCssClass'=>'nav-option',
-                )); ?>
-            </div><!-- mainmenu -->
-        </div><!-- container -->
+                    array(
+                        'label'=>'ABOUT',
+                        'url'  =>array('/site/page',
+                        'view' =>'about')
+                    ),
+                    array(
+                        'label'=>'INVEST',
+                        'url'=>array('/site/invest')
+                    ),
+                    array(
+                        'label'=>'ENTREPRENEUR',
+                        'url'=>array('/site/entrepreneur')
+                    ),
+                    array(
+                        'label'=>'EDUCATE',
+                        'url'=>array('/site/educate')
+                    ),
+                    array(
+                        'label'=>'CONTACT',
+                        'url'=>array('/site/contact')
+                    ),
+                    array(
+                        'label'=>'DISCLAIMER',
+                        'url'=>array('/site/page',
+                        'view'=>'disclaimer')
+                    ),
+                    array(
+                        'label'=>'LOGIN',
+                        'url'=>array('/site/login'),
+                        'visible'=>Yii::app()->user->isGuest
+                    ),
+                    array(
+                        'label'=>'LOGOUT ('.Yii::app()->user->name.')',
+                        'url'=>array('/site/logout'),
+                        'visible'=>!Yii::app()->user->isGuest
+                    )
+                ),
+                'itemCssClass'=>'nav-option',
+            )); ?>
+        </div><!-- mainmenu -->
 	</div><!-- header -->
 
 
 
-    <div id="main" class="container">
-        <?php if(isset($this->breadcrumbs)):?>
-            <?php $this->widget('zii.widgets.CBreadcrumbs', array(
-                'links'=>$this->breadcrumbs,
-            )); ?><!-- breadcrumbs -->
-        <?php endif?>
+    <div id="main">
+        <div id="mission-statement">
+            <p>Moser Capital Management is a newly founded organisation dedicated to educating society about the benefits and risks of gaining exposure to financial markets. Our services include private equity management, entrepreneur partnership and financial education.</p>
+        </div>
 
         <?php echo $content; ?>
 

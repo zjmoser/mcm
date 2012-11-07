@@ -10,26 +10,33 @@ body
 
 #page
 {
+    width: 1000px;
+    margin: 0 auto;
 }
 
 #header
 {
 	margin: 0;
 	padding: 0;
-    height: 75px;
+    height: 76px;
     background: white url(navbg.png) repeat-x left top;
 }
 
 #main {
-	background: white;
-	border-left: 1px solid #C9E0ED;
-	border-right: 1px solid #C9E0ED;
-	border-bottom: 1px solid #C9E0ED;
+	background: #FFFFFF;
 }
 
 #content
 {
     padding: 20px;
+}
+
+#mission-statement
+{
+    margin: 15px  auto;
+    text-align: center;
+    color: #999999;
+    font: normal 12pt "Eras Medium ITC" "Helvetica" sans-serif;
 }
 
 #sidebar
@@ -50,7 +57,8 @@ body
 {
     float: left;
     position: relative;
-    top: 12.5px;
+    top: 13px;
+    left: 13px;
 }
 
 #accnt-box
@@ -256,4 +264,3 @@ div.search-form
 .rfloat {
     float: right;
 }
-
