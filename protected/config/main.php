@@ -17,6 +17,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
         'ext.LoginBox.LoginBox',
+        'application.extensions.yahoofinance.YahooFinanceComponent',
 	),
 
 	'modules'=>array(
@@ -74,6 +75,7 @@ return array(
 				),
 			),
 		),
+        'yahoofinance'=>array('class'=>'YahooFinanceComponent'),
 	),
 
 	// application-level parameters that can be accessed

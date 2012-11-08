@@ -40,7 +40,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','page','error','contact','login','logout'),
+				'actions'=>array('index','page','error','contact','login','logout', 'test'),
 				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
@@ -140,4 +140,17 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    public function actionTest()
+    {
+        $data = 'TEST';
+
+        $yf = Yii::app()->yahoofinance;
+        $yf->setTicker('^GSPC');
+        $yf->setFromDate(1,1,2012);
+        $yf->setToDate(29,2,2012);
+        $data = $yf->data;
+        $this->render('test', array('data'=>$data));
+
+    }
 }
