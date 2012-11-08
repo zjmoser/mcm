@@ -17,7 +17,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
         'ext.LoginBox.LoginBox',
-        'application.extensions.yahoofinance.YahooFinanceComponent',
+        'ext.yahoofinance.YahooFinanceComponent',
 	),
 
 	'modules'=>array(
