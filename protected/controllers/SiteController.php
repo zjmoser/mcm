@@ -143,13 +143,21 @@ class SiteController extends Controller
 
     public function actionTest()
     {
-        $data = 'TEST';
+        $ticker = '^GSPC';
+        $cache = Yii::app()->cache;
+        $data  = $cache->get($ticker);
+        if($data==false)
+        {
+            $yf = Yii::app()->yahoofinance;
+            $yf->setTicker('^GSPC');
+            $yf->setFromDate(1,1,2012);
+            $yf->setToDate(31,12,2012);
+            $data = $yf->closeData;
 
-        $yf = Yii::app()->yahoofinance;
-        $yf->setTicker('^GSPC');
-        $yf->setFromDate(1,1,2012);
-        $yf->setToDate(29,12,2012);
-        $data = $yf->data;
+            $cache->set($ticker, $data, 3600);
+            vd('Stored data in cache');
+        }
+
         $this->render('test', array('data'=>$data));
 
     }

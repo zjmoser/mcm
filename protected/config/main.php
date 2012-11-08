@@ -46,9 +46,6 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		//'db'=>array(
-		//	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		//),
 		// uncomment the following to use a MySQL database
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=mcm',
@@ -76,6 +73,9 @@ return array(
 				),
 			),
 		),
+        'cache'=>array(
+            'class'=>'CFileCache',
+        ),
         'yahoofinance'=>array('class'=>'YahooFinanceComponent'),
 	),
 

@@ -8,60 +8,46 @@ $this->pageTitle=Yii::app()->name;
 
 <h1>Yahoo!</h1>
 
-        <?php
-        $jqData = $data;
-        array_shift($jqData);
-        /*$this->widget('JqplotGraphWidget',
-            array(
-                'data'=>array($jqData),
-                'options'=>array(
-                    'seriesDefaults'=>array('yaxis'=>'y2axis'),
-                    'axes'=>array(
-                        'xaxis'=>array(
-                            'renderer'=>'js:$.jqplot.DateAxisRenderer',
-                            'tickOptions'=>array('formatString'=>'%b %e'),
-                            'tickInterval'=> '1 week',
-                        ),
-                        'y2axis'=>array(
-                            'tickOptions'=>array('formatString'=>'$%d'),
-                            'min'=>1200,
-                            'max'=>1400,
-                        ),
-                    ),
-                    'series'=>array(
-                        array('renderer'=>'js:$.jqplot.OHLCRenderer'),
-                    ),
-                    'title'=>'S&P 500',
-                ),
-                'htmlOptions'=>array(
-                    'style'=>'width:700px;height:400px;'
-                ),
-                'pluginScriptFile'=>array(
-                    'jqplot.dateAxisRenderer.js',
-                    'jqplot.ohlcRenderer.js',
-                ),
-            )
-        );*/
-        ?>
-
-
-<table>
-    <tr>
 <?php
-        list($keys, $headers) = each($data);
-        foreach ($headers as $var) {
-?>
-        <th><?php echo $var ?></th>
-<?php
-        }
-?>
-    </tr>
+$jqData = $data;
+$jqData = array_slice($data, 1, 30);
 
-<?php while (list($keys, $values) = each($data)) { ?>
-    <tr>
-    <?php foreach ($values as $val) { ?>
-        <td><?php echo $val ?></td>
-    <?php } ?>
-    </tr>
-<?php } ?>
-</table>
+$plotData = array();
+for($i=0; $i<30; $i++)
+    $plotData[] = array($i, (float)$jqData[29-$i]);
+
+$this->widget('JqplotGraphWidget',
+    array(
+        'data'=>array($plotData),
+        'options'=>array(
+            'seriesColors'=>array('#162D50'),
+            'axesDefaults'=>array(
+                'showTicks'=>false,
+            ),
+            'axes'=>array(
+                'xaxis'=>array(
+                    'min'=>0,
+                ),
+                'y2axis'=>array(
+                ),
+            ),
+            'seriesDefaults'=>array(
+                'yaxis'=>'y2axis',
+                'showMarker'=>false,
+                'rendererOptions'=>array(
+                    'smooth'=>true,
+                ),
+            ),
+            'series'=>array(
+            ),
+            'title'=>'S&P 500',
+        ),
+        'htmlOptions'=>array(
+            'style'=>'width:400px;height:400px;'
+        ),
+        'pluginScriptFile'=>array(
+        ),
+    )
+);
+?>
+

@@ -10,8 +10,6 @@ class YahooFinanceComponent extends CApplicationComponent {
 
     private $_dataKeys = array('date', 'open', 'high', 'low', 'close', 'vol', 'adj');
 
-    private $_cache = array();
-
     /**
      * Returns an array of stock data retrieved from yahoo finance. Each element contains keys: date, open, high, low, close, vol, and adj.
      */
@@ -34,6 +32,20 @@ class YahooFinanceComponent extends CApplicationComponent {
 
         foreach ($lines as $line)
             $data[] = array_slice(explode(',', $line), 0, 5);
+        return $data;
+    }
+
+    /**
+     * Similar to getData() however only returns the adjusted close.
+     */
+    public function getCloseData() {
+        $data = array();
+        $lines = $this->retrieveYahooData();
+
+        foreach ($lines as $line) {
+            $cells = explode(',', $line);
+            $data[] = end($cells);
+        }
         return $data;
     }
 
@@ -74,19 +86,11 @@ class YahooFinanceComponent extends CApplicationComponent {
             $queryString .= "&g=d";
             $queryString .= "&ignore=.csv";
 
-            $key = $this->_ticker.$queryString;
-            if(array_key_exists($key, $this->_cache)) {
-                vd("Key exists: $key");
-            }
-            else {
-                $requestUrl = $this->_host . '?s=' . rawUrlEncode($this->_ticker) . $queryString;
+            $requestUrl = $this->_host . '?s=' . rawUrlEncode($this->_ticker) . $queryString;
 
-                // Pull data (download CSV as file)
-                $csv = file_get_contents($requestUrl);
-                $lines = explode("\n", trim($csv));
-
-                $this->_cache[$key] = 1;
-            }
+            // Pull data (download CSV as file)
+            $csv = file_get_contents($requestUrl);
+            $lines = explode("\n", trim($csv));
         }
         return $lines;
     }
