@@ -148,7 +148,7 @@ class SiteController extends Controller
         $yf = Yii::app()->yahoofinance;
         $yf->setTicker('^GSPC');
         $yf->setFromDate(1,1,2012);
-        $yf->setToDate(29,2,2012);
+        $yf->setToDate(29,12,2012);
         $data = $yf->data;
         $this->render('test', array('data'=>$data));
 

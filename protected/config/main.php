@@ -18,6 +18,7 @@ return array(
 		'application.components.*',
         'ext.LoginBox.LoginBox',
         'ext.yahoofinance.YahooFinanceComponent',
+        'ext.jqplot.JqplotGraphWidget',
 	),
 
 	'modules'=>array(

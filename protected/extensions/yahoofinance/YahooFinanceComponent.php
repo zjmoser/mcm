@@ -8,44 +8,32 @@ class YahooFinanceComponent extends CApplicationComponent {
     private $_fromDate;
     private $_toDate;
 
+    private $_dataKeys = array('date', 'open', 'high', 'low', 'close', 'vol', 'adj');
+
+    private $_cache = array();
+
     /**
      * Returns an array of stock data retrieved from yahoo finance. Each element contains keys: date, open, high, low, close, vol, and adj.
      */
     public function getData() {
-        $data = null;
+        $data = array();
+        $lines = $this->retrieveYahooData();
 
-        if(isset($this->_ticker)) {
-            $queryString = "";
-            $queryString .= "&a={$this->_fromDate['m']}";
-            $queryString .= "&b={$this->_fromDate['d']}";
-            $queryString .= "&c={$this->_fromDate['y']}";
-            $queryString .= "&d={$this->_toDate['m']}";
-            $queryString .= "&e={$this->_toDate['d']}";
-            $queryString .= "&f={$this->_toDate['y']}";
-            $queryString .= "&g=d";
-            $queryString .= "&ignore=.csv";
+        foreach ($lines as $line)
+            $data[] = explode(',', $line);
 
-            $requestUrl = $this->_host . '?s=' . rawUrlEncode($this->_ticker) . $queryString;
+        return $data;
+    }
 
-            // Pull data (download CSV as file)
-            $csv = file_get_contents($requestUrl);
+    /**
+     * Similar to getData() however only returns the date, open, high, low, close.
+     */
+    public function getOhlcData() {
+        $data = array();
+        $lines = $this->retrieveYahooData();
 
-            $lines = explode("\n", trim($csv));
-            $data = "";
-
-            foreach ($lines as $line) {
-                $cells = explode(',', $line);
-                $data[] = array(
-                    'date'  => $cells[0],
-                    'open'  => $cells[1],
-                    'high'  => $cells[2],
-                    'low'   => $cells[3],
-                    'close' => $cells[4],
-                    'vol'   => $cells[5],
-                    'adj'   => $cells[6],
-                );
-            }
-        }
+        foreach ($lines as $line)
+            $data[] = array_slice(explode(',', $line), 0, 5);
         return $data;
     }
 
@@ -71,6 +59,36 @@ class YahooFinanceComponent extends CApplicationComponent {
 
     public function getToDate() {
         return $this->_toDate;
+    }
+
+    private function retrieveYahooData() {
+        $lines = null;
+        if(isset($this->_ticker)) {
+            $queryString = "";
+            $queryString .= "&a={$this->_fromDate['m']}";
+            $queryString .= "&b={$this->_fromDate['d']}";
+            $queryString .= "&c={$this->_fromDate['y']}";
+            $queryString .= "&d={$this->_toDate['m']}";
+            $queryString .= "&e={$this->_toDate['d']}";
+            $queryString .= "&f={$this->_toDate['y']}";
+            $queryString .= "&g=d";
+            $queryString .= "&ignore=.csv";
+
+            $key = $this->_ticker.$queryString;
+            if(array_key_exists($key, $this->_cache)) {
+                vd("Key exists: $key");
+            }
+            else {
+                $requestUrl = $this->_host . '?s=' . rawUrlEncode($this->_ticker) . $queryString;
+
+                // Pull data (download CSV as file)
+                $csv = file_get_contents($requestUrl);
+                $lines = explode("\n", trim($csv));
+
+                $this->_cache[$key] = 1;
+            }
+        }
+        return $lines;
     }
 
 }
