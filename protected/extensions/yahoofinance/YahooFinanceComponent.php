@@ -5,13 +5,13 @@ class YahooFinanceComponent extends CApplicationComponent {
     private $_ticker = null;
     private $_host   = 'http://ichart.finance.yahoo.com/table.csv';
 
-    private $_fromDate;
-    private $_toDate;
+    private $_fromDate = null;
+    private $_toDate = null;
 
     private $_dataKeys = array('date', 'open', 'high', 'low', 'close', 'vol', 'adj');
 
     /**
-     * Returns an array of stock data retrieved from yahoo finance. Each element contains keys: date, open, high, low, close, vol, and adj.
+     * Returns an array of stock data retrieved from yahoo finance.
      */
     public function getData() {
         $data = array();
@@ -43,8 +43,7 @@ class YahooFinanceComponent extends CApplicationComponent {
         $lines = $this->retrieveYahooData();
 
         foreach ($lines as $line) {
-            $cells = explode(',', $line);
-            $data[] = end($cells);
+            $data[] = end(explode(',', $line));
         }
         return $data;
     }
@@ -75,7 +74,7 @@ class YahooFinanceComponent extends CApplicationComponent {
 
     private function retrieveYahooData() {
         $lines = null;
-        if(isset($this->_ticker)) {
+        if(isset($this->_ticker, $this->_fromDate, $this->_toDate)) {
             $queryString = "";
             $queryString .= "&a={$this->_fromDate['m']}";
             $queryString .= "&b={$this->_fromDate['d']}";
