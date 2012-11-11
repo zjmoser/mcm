@@ -92,37 +92,8 @@
         <?php echo $content; ?>
 
         <div id="sidebar">
-        <?php /*
-        $this->widget('JqplotGraphWidget',
-            array(
-                'data'=>array($jqData),
-                'options'=>array(
-                    'seriesDefaults'=>array('yaxis'=>'y2axis'),
-                    'axes'=>array(
-                        'xaxis'=>array(
-                            'renderer'=>'js:$.jqplot.DateAxisRenderer',
-                            'tickOptions'=>array('formatString'=>'%b %e'),
-                            'tickInterval'=> '1 week',
-                        ),
-                        'y2axis'=>array(
-                            'tickOptions'=>array('formatString'=>'$%d'),
-                            'min'=>1200,
-                            'max'=>1400,
-                        ),
-                    ),
-                    'series'=>array(
-                        array('renderer'=>'js:$.jqplot.OHLCRenderer'),
-                    ),
-                    'title'=>'S&P 500',
-                ),
-                'htmlOptions'=>array(
-                    'style'=>'width:200px; height:200px;'
-                ),
-                'pluginScriptFile'=>array(
-                ),
-            )
-        );
-        */?>
+<?php $this->widget('StockChartWidget'); ?>
+<?php $this->widget('StockChartWidget', array('style'=>'one')); ?>
         </div>
 
         <div class="clear"></div>

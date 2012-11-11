@@ -43,7 +43,7 @@ class SiteController extends Controller
 				'actions'=>array('index','page','error','contact','login','logout', 'test'),
 				'users'=>array('*'),
 			),
-			array('deny',  // deny all users
+			array('allow',  // deny all users
 				'users'=>array('*'),
 			),
 		);
@@ -160,5 +160,12 @@ class SiteController extends Controller
 
         $this->render('test', array('data'=>$data));
 
+    }
+
+    public function actionClear()
+    {
+        Yii::app()->cache->flush();
+        vd('Cache flushed');
+        $this->redirect('test');
     }
 }
