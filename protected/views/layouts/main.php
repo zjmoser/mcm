@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
+    <link rel="shortcut icon" href="<?php Yii::app()->request->baseUrl; ?>/favico.ico" type="image/x-icon" />
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
@@ -96,8 +97,15 @@
         <?php echo $content; ?>
 
         <div id="sidebar">
-<?php $this->widget('StockChartWidget'); ?>
-<?php $this->widget('StockChartWidget', array('style'=>'one')); ?>
+            <div id="recent-news">
+                <h2>RECENT NEWS</h2>
+            </div>
+            <hr class="break"/>
+            <div id="market-status">
+                <h2>MARKET STATUS</h2>
+                    <?php $this->widget('StockChartWidget'); ?>
+                    <?php $this->widget('StockChartWidget', array('style'=>'one')); ?>
+            </div>
         </div>
 
         <div class="clear"></div>
