@@ -66,16 +66,16 @@
                         'url'=>array('/site/page',
                         'view'=>'disclaimer')
                     ),
-                    array(
-                        'label'=>'LOGIN',
-                        'url'=>array('/site/login'),
-                        'visible'=>Yii::app()->user->isGuest
-                    ),
-                    array(
-                        'label'=>'LOGOUT ('.Yii::app()->user->name.')',
-                        'url'=>array('/site/logout'),
-                        'visible'=>!Yii::app()->user->isGuest
-                    )
+                    #array(
+                    #    'label'=>'LOGIN',
+                    #    'url'=>array('/site/login'),
+                    #    'visible'=>Yii::app()->user->isGuest
+                    #),
+                    #array(
+                    #    'label'=>'LOGOUT ('.Yii::app()->user->name.')',
+                    #    'url'=>array('/site/logout'),
+                    #    'visible'=>!Yii::app()->user->isGuest
+                    #)
                 ),
                 'itemCssClass'=>'nav-option',
             )); ?>
@@ -86,7 +86,11 @@
 
     <div id="main">
         <div id="mission-statement">
-            <p>Moser Capital Management is a newly founded organisation dedicated to educating society about the benefits and risks of gaining exposure to financial markets. Our services include private equity management, entrepreneur partnership and financial education.</p>
+            <p class="quiet">At Moser Capital Management we are dedicated to educating society about the benefits and risks involved in gaining exposure to financial markets. Our services include private equity management, entrepreneur partnership and financial education.</p>
+        </div>
+
+        <div id="banner-box">
+            <?php echo $this->clips['banner']; ?>
         </div>
 
         <?php echo $content; ?>
@@ -99,9 +103,8 @@
         <div class="clear"></div>
 
         <div id="footer">
-            Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+            Copyright &copy; <?php echo date('Y'); ?> by Moser Capital Management.<br/>
             All Rights Reserved.<br/>
-            <?php echo Yii::powered(); ?>
         </div><!-- footer -->
     </div>
 

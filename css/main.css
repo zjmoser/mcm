@@ -2,11 +2,21 @@ body
 {
 	margin: 0;
 	padding: 0;
-	color: #555;
-	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
-	background: white;
+    color: #333333;
+	font-family: Tahoma, "Lucida Sans", "Lucida Grande", sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    font-style: italic;
+    color: #162D50;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; color: #5F8DD3; } /* Medium blue */
 
 #page
 {
@@ -19,7 +29,7 @@ body
 	margin: 0;
 	padding: 0;
     height: 76px;
-    background: white url(navbg.png) repeat-x left top;
+    background: url(../images/navbg.png) repeat-x left top;
 }
 
 #main {
@@ -30,17 +40,15 @@ body
 {
     margin: 15px  auto;
     text-align: center;
-    color: #999999;
-    font: normal 12pt "Eras Medium ITC" "Helvetica" sans-serif;
+    font-size: 12pt;
+    font-family: "Eras Medium ITC", "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #content
 {
     float: left;
     min-height: 800px;
-    padding: 20px;
-    width: 690px;
-    border: 1px solid red;
+    width: 730px;
 }
 
 #sidebar
@@ -54,11 +62,12 @@ body
 #footer
 {
     clear: both;
-	padding: 10px;
-	margin: 10px 20px;
-	font-size: 0.8em;
+    margin-top: 20px;
+    height: 76px;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+    line-height: 38px;
+    color: #ffffff;
+    background: url(../images/navbg.png) top left repeat-x;
 }
 
 #logo
@@ -111,7 +120,7 @@ body
 {
     color: inherit;
 	background-color:transparent;
-    font-family: "Eras Medium ITC", Helvetica, sans-serif;
+    font-family: "Eras Medium ITC", "Lucida Sans", "Lucida Grande", sans-serif;
 	font-size: 16px;
 	font-weight: bold;
 	text-decoration:none;
@@ -265,10 +274,41 @@ div.search-form
 	background: #80CFFF;
 }
 
-.lfloat {
-    float: left;
+.block {
+    display: block;
 }
 
-.rfloat {
-    float: right;
+/** HOME PAGE STYLES **/
+#column-box {
+    margin-top: 40px;
 }
+
+#column-box .two-column {
+    display: inline-block;
+}
+
+#column-box a {
+    color: inherit;
+}
+
+#column-box h2 a {
+    text-decoration: none;
+    line-height: 20px;
+    cursor: default; /* TODO: cursor */
+}
+
+#column-box h3 {
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+
+#column-box .home-img-box {
+    height: 250px;
+    position: relative;
+}
+
+#column-box .home-img-box {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
