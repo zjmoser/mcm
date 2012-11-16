@@ -3,13 +3,10 @@
 class StockChartWidget extends CWidget{
 
     public $ticker   = '^GSPC';
-    public $fromDate = array(1,1,2012);
-    public $toDate   = array(31,12,2012);
-    public $number   = 30;
     public $options  = null;
     public $style    = 'minimal';
 
-    public $title = null;
+    public $title = 's&p 500';
 
     public function init(){
         parent::init();
@@ -17,82 +14,100 @@ class StockChartWidget extends CWidget{
 
     public function run() {
         $cache = Yii::app()->cache;
+        $cache->flush();
         $data  = $cache->get($this->ticker);
+
         if($data==false)
         {
-            $yf = Yii::app()->yahoofinance;
-            $yf->setTicker($this->ticker);
-            $yf->setFromDate($this->fromDate[0], $this->fromDate[1], $this->fromDate[2]);
-            $yf->setToDate($this->toDate[0], $this->toDate[1], $this->toDate[2]);
-            $data = $yf->closeData;
+        $query = <<<EOS
+SELECT * FROM (
+    SELECT m.date_recorded, m.close_price
+    FROM market_daily m
+    WHERE m.ticker="{$this->ticker}"
+    ORDER BY m.date_recorded DESC
+    LIMIT 30
+) AS n
+ORDER BY n.date_recorded
+EOS;
+
+            $tickerData = MarketDaily::model()->findAllBySql($query);
+            $data = array('series'=>array());
+            $max_price = -99999.0;
+            $min_price = 99999.0;
+            $i=0;
+            foreach ($tickerData as $dailyDataItem) {
+                $dt = new DateTime($dailyDataItem->date_recorded);
+                $price = (float) $dailyDataItem->close_price;
+                $data['series'][] = array($i++, $price);
+
+                if ($price < $min_price) $min_price = $price;
+                if ($price > $max_price) $max_price = $price;
+            }
+
+            $data['min'] = $min_price;
+            $data['max'] = $max_price;
 
             $cache->set($this->ticker, $data, 3600);
         }
-
-        // Slice off headers and select the predefined number of data pieces
-        $data = array_slice($data, 1, $this->number);
-
-        // Sort the data in chronological order
-        $plotData = array();
-        for($i=0; $i<$this->number; $i++)
-            $plotData[] = array($i, (float)$data[$this->number-($i+1)]);
 
         if(is_null($this->options))
             // Use predefined template based on style variable
             $this->options = $this->{'style_'.$this->style};
 
-        if(isset($this->title))
-           $this->options['title'] = $this->title;
+        $range = $data['max'] - $data['min'];
+        $space = $range/10;
+
+        $this->options['axes']['yaxis'] = array(
+            'min'=>$data['min'] - $space,
+            'max'=>$data['max'] + $space,
+        );
+
+        $this->options['canvasOverlay'] = array(
+            'show'=>true,
+            'objects'=>array(array(
+                'dashedHorizontalLine'=>array(
+                    'name'     =>'zero',
+                    'y'        =>$data['series'][0][1],
+                    'lineWidth'=>1,
+                    'color'    =>'#999999',
+                    'shadow'   =>false,
+                    'xOffset'  =>'0',
+                    'dashPattern'=>array(5, 5),
+                ),
+            )),
+        );
 
         $id=$this->getId();
-        echo CHtml::openTag('div', array('id'=>$id, 'style'=>'width:250px;margin:0 auto;'));
+        echo CHtml::openTag('div', array('id'=>$id, 'class'=>'graph-box'));
+        echo CHtml::openTag('div', array('class'=>'graph-title-box'));
+        echo "<h5>{$this->title}</h5>";
+        echo "<h6>1 MONTH</h6>";
+        echo CHtml::closeTag('div');
+
         $this->widget('JqplotGraphWidget',
             array(
-                'data'=>array($plotData),
+                'data'=>array($data['series']),
                 'options'=>$this->options,
-                'htmlOptions'=>array(
-                    'style'=>'width:250px;height:200px;'
-                ),
             )
         );
         echo CHtml::closeTag('div');
-
-$scriptString = <<<EOT
-mytitle = \$('<div class="my-jqplot-title" style="position:absolute;padding: 15px;width:100%;font-size:16px;">S&P 500</div>').insertAfter('#$id .jqplot-grid-canvas');
-EOT;
-
-        Yii::app()->getClientScript()->registerScript(__CLASS__.'#'.$id, $scriptString);
     }
 
     public $style_minimal = array(
         'seriesColors'=>array('#162D50'),
-        'title'=>array(
-            #'text'=>'Hello',
-            #'textColor' =>'#4d4d4d',
-            #'fontFamily'=>'Eras Medium ITC, Arial, Helvetica, sans-serif',
-            #'fontSize'  =>'32px',
-            #'textAlign' =>'center',
-        ),
         'axesDefaults'=>array(
             'showTicks'=>false,
-            'tickOptions'=>array(
-                #'showLabel'=>true,
-                #'showMark'=>false,
-            ),
-            'rendererOptions'=>array(
-                'baselineWidth'=>2,
-                'baselineColor'=>'#999999',
-                'drawBaseline'=>false,
-            ),
+            'show'=>false,
         ),
         'axes'=>array(
             'xaxis'=>array(
                 'min'=>0,
-                #'drawMajorGridlines' => false,
+                'max'=>33,
+            ),
+            'yaxis'=>array(
             ),
         ),
         'seriesDefaults'=>array(
-            'yaxis'=>'y2axis',
             'showMarker'=>false,
             'fillColor' =>'#4287F0',
             'rendererOptions'=>array(
@@ -106,97 +121,8 @@ EOT;
             'drawGridlines'  =>false,
             'backgroundColor'=>'#ffffff',
             'borderColor'    =>'#999999',
-            'borderWidth'    =>1,
-            'shadow'         =>false,
-        ),
-    );
-
-    public $style_one = array(
-        'seriesColors'=>array('#162D50'),
-        'title'=>array(
-            #'text'=>'Hello',
-            #'textColor' =>'#4d4d4d',
-            #'fontFamily'=>'Eras Medium ITC, Arial, Helvetica, sans-serif',
-            #'fontSize'  =>'32px',
-            #'textAlign' =>'center',
-        ),
-        'axesDefaults'=>array(
-            'showTicks'=>false,
-            'tickOptions'=>array(
-                #'showLabel'=>true,
-                #'showMark'=>false,
-            ),
-            'rendererOptions'=>array(
-                'baselineWidth'=>2,
-                'baselineColor'=>'#999999',
-                'drawBaseline'=>false,
-            ),
-        ),
-        'axes'=>array(
-            'xaxis'=>array(
-                #'pad'=>1,
-                #'drawMajorGridlines' => false,
-            ),
-        ),
-        'seriesDefaults'=>array(
-            'yaxis'=>'y2axis',
-            'showMarker'=>false,
-            'fillColor' =>'#4287F0',
-            'rendererOptions'=>array(
-                'smooth'=>true,
-            ),
-        ),
-        'grid'=>array(
-            'drawGridlines'  =>false,
-            'backgroundColor'=>'#ffffff',
-            'borderColor'    =>'#999999',
             'borderWidth'    =>0,
             'shadow'         =>false,
         ),
     );
-
-    public $style_two = array(
-        'seriesColors'=>array('#162D50'),
-        'title'=>array(
-            #'text'=>'Hello',
-            #'textColor' =>'#4d4d4d',
-            #'fontFamily'=>'Eras Medium ITC, Arial, Helvetica, sans-serif',
-            #'fontSize'  =>'32px',
-            #'textAlign' =>'center',
-        ),
-        'axesDefaults'=>array(
-            'showTicks'=>false,
-            'tickOptions'=>array(
-                #'showLabel'=>true,
-                #'showMark'=>false,
-            ),
-            'rendererOptions'=>array(
-                'baselineWidth'=>2,
-                'baselineColor'=>'#999999',
-                'drawBaseline'=>false,
-            ),
-        ),
-        'axes'=>array(
-            'xaxis'=>array(
-                #'min'=>-0.5,
-                #'drawMajorGridlines' => false,
-            ),
-        ),
-        'seriesDefaults'=>array(
-            'yaxis'=>'y2axis',
-            'showMarker'=>false,
-            'fillColor' =>'#4287F0',
-            'rendererOptions'=>array(
-                'smooth'=>true,
-            ),
-        ),
-        'grid'=>array(
-            'drawGridlines'  =>false,
-            'backgroundColor'=>'#ffffff',
-            'borderColor'    =>'#999999',
-            'borderWidth'    =>1,
-            'shadow'         =>false,
-        ),
-    );
-
 }

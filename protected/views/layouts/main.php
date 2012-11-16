@@ -103,8 +103,9 @@
             <hr class="break"/>
             <div id="market-status">
                 <h2>MARKET STATUS</h2>
-                    <?php $this->widget('StockChartWidget'); ?>
-                    <?php $this->widget('StockChartWidget', array('style'=>'one')); ?>
+                    <?php $this->widget('StockChartWidget', array('ticker'=>'^NZ50', 'title'=>'NZX 50')); ?>
+                    <?php $this->widget('StockChartWidget', array('ticker'=>'^AXJO', 'title'=>'ASX 200')); ?>
+                    <?php $this->widget('StockChartWidget', array('ticker'=>'^GSPC', 'title'=>'S&P 500')); ?>
             </div>
         </div>
 

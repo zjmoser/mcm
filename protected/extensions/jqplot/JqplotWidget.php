@@ -9,7 +9,7 @@ abstract class JqplotWidget extends CWidget{
 
     public $scriptFile=array('excanvas.min.js','jquery.jqplot.js');
 
-    public $pluginScriptFile=array();
+    public $pluginScriptFile=array('jqplot.canvasOverlay.js');
 
     public $cssFile=array('jquery.jqplot.css');
 
