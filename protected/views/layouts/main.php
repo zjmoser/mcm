@@ -27,7 +27,7 @@
 	<div id="header">
         <div id="logo">
             <?php
-            $imghtml = CHtml::image('/css/title.png', 'Moser Capital Management');
+            $imghtml = CHtml::image('/images/title.png', 'Moser Capital Management');
             echo CHtml::link($imghtml, array('/site/index'))
             ?>
         </div>
@@ -43,8 +43,8 @@
                     ),
                     array(
                         'label'=>'ABOUT',
-                        'url'  =>array('/site/page',
-                        'view' =>'about')
+                        'url'  =>array('/site/about',),
+                        #'view' =>'about')
                     ),
                     array(
                         'label'=>'INVEST',

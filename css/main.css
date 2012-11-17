@@ -3,7 +3,7 @@ body
 	margin: 0;
 	padding: 0;
     color: #333333;
-	font-family: Tahoma, "Lucida Sans", "Lucida Grande", sans-serif;
+	font-family: "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,14 +17,21 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 32px; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; color: #5F8DD3; } /* Medium blue */
-h4 { font-size: 16px; color: #5F8DD3; } /* Medium blue */
+h4 { font-size: 16px; color: #333333; }
 h5 { font-size: 12px; color: #000000; font-style: normal; }
 h6 { font-size: 10px; color: #999999; }
 
-hr.break {
+hr {
     background: none repeat scroll 0 0 #999999;
+}
+
+hr.break {
     margin: 5px auto;
     width: 95%;
+}
+
+.white-bg {
+    background-color: #ffffff;
 }
 
 #page
@@ -409,4 +416,95 @@ div.search-form
 
 #sidebar .jqplot-grid-canvas {
     display: none;
+}
+
+/* About page styles */
+
+#about-me {
+    border: 2px solid #333333;
+    padding: 20px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#about-me #profile-pic {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #999999;
+}
+
+#about-me #profile-txt {
+    margin-left: 324px;
+    text-align: justify;
+    padding-right: 10px;
+}
+
+#about-me #profile-txt h1 {
+    margin-bottom: 20px;
+}
+
+#about {
+    position: relative;
+    width: 715px;
+}
+
+#about .title {
+    margin-bottom: 30px;
+}
+
+#about .title hr {
+    position: absolute;
+    margin: 16px auto;
+}
+
+#about .title h1 {
+    position: relative;
+    display: inline-block;
+    background-color: #ffffff;
+    padding-right: 20px;
+}
+
+#about .service {
+    color: #333333;
+}
+
+#about .service .subheading {
+    margin-bottom: 10px;
+}
+
+#about .service table {
+    margin-bottom: 30px;
+}
+
+#about .service td {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+#about .service p {
+    margin-bottom: 1em;
+}
+
+#about .service .service-img {
+    border: 2px solid #999999;
+    border-radius: 7px;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 0 0;
+}
+
+#about .service .right-img {
+    margin: 0 0 0 10px;
+}
+
+#about #logo-img {
+    width:  170px;
+    height: 170px;
+    float: left;
+}
+
+#about #logo-txt {
+    margin-left: 190px;
+    text-align: justify;
 }

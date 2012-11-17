@@ -65,6 +65,15 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionAbout()
+	{
+        $this->beginClip('banner');
+            $this->renderPartial('aboutme');
+        $this->endClip();
+
+		$this->render('about');
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
