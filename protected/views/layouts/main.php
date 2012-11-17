@@ -99,7 +99,7 @@
         <div id="sidebar">
             <div id="recent-news">
                 <h2>RECENT NEWS</h2>
-                    <?php $this->widget('NewsFeedWidget', array('listLength'=>2)); ?>
+                    <?php $this->widget('NewsFeedWidget', array('listLength'=>3)); ?>
             </div>
             <hr class="break"/>
             <div id="market-status">
