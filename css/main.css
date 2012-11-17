@@ -366,12 +366,14 @@ div.search-form
 #sidebar #newsfeed h5 {
     line-height: 12px;
     font-weight: normal;
+    font-size: 11px;
 }
 
 #sidebar #newsfeed p {
     font-weight: normal;
     color: #999999;
     margin: 5px 0 0 0;
+    font-size: 11px;
 }
 
 /* Market Summary */
