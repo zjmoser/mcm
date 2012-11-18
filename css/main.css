@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px;
 }
 
-h1 { font-size: 32px; }
+h1 { font-size: 32px; margin-bottom: 1em; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; color: #5F8DD3; } /* Medium blue */
 h4 { font-size: 16px; color: #333333; }
@@ -449,7 +449,6 @@ div.search-form
 }
 
 #about .title {
-    margin-bottom: 30px;
 }
 
 #about .title hr {
@@ -506,5 +505,17 @@ div.search-form
 
 #about #logo-txt {
     margin-left: 190px;
+    text-align: justify;
+}
+
+#invest {
+    width: 715px;
+}
+
+#invest h1 {
+    margin-bottom: 0.5em;
+}
+
+#invest p {
     text-align: justify;
 }

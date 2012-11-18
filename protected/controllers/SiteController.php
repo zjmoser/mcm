@@ -49,11 +49,6 @@ class SiteController extends Controller
 		);
 	}
 
-    public function filterLoadLoginForm()
-    {
-
-    }
-
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -73,6 +68,21 @@ class SiteController extends Controller
 
 		$this->render('about');
 	}
+
+    public function actionInvest()
+    {
+		$this->render('invest');
+    }
+
+    public function actionEntrepreneur()
+    {
+		$this->render('entrepreneur');
+    }
+
+    public function actionEducate()
+    {
+		$this->render('educate');
+    }
 
 	/**
 	 * This is the action to handle external exceptions.
