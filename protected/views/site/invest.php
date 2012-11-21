@@ -15,7 +15,7 @@ $this->pageTitle= "Moser Capital | Invest";
     <img src="/images/alpha_chart.png" alt="Moser Capital Alpha Fund Chart"/>
     <p>There are a few main conclusions to be drawn from these results, the first being that this trial only involved a small amount of capital ($1000). Our Alpha Fund will launch in March 2013 with between 50k and 100k under management and we foresee no reduction in performance due to the increased size of the fund.</p>
     <p>The second main conclusion that can be drawn is the high absolute return generated in this period. Peaking at 400% before residing at 200% return on investment, this may be what some investors dream of. Being an event-driven fund we aim to capitalise on market events and we successfully did so on the quantitative easing announcements in the US in September 2012. We cannot however guarantee such favourable trading stimulus in the future so these results cannot be used to accurately forecast future returns.</p>
-    <p>Also not to be overlooked is the relatively large maximum drawdown of 62.5%. This occurred during trials of variant strategies that proved themselves unfavourable. We aim to reduce future drawdown with tighter risk controls.</p>
+    <p>Also not to be overlooked is the relatively large maximum drawdown of 62.5%. This occurred during trials of variant strategies that proved themselves unfavourable. We aim to reduce future drawdown by focusing on our core strengths.</p>
     <h1>PERSONAL INVESTMENT PLAN</h1>
     <p>If you decide that our Alpha Fund is not suitable for your investment, we can meet with you to discuss alternate investment strategies such as balanced market portfolios. In this way you can more comfortably control your exposure to the uncertainty of financial markets.</p>
 </div>

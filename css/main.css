@@ -14,12 +14,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px;
 }
 
-h1 { font-size: 32px; margin-bottom: 1em; }
+h1 { font-size: 32px; margin-bottom: 0.5em; }
 h2 { font-size: 20px; }
 h3 { font-size: 16px; color: #5F8DD3; } /* Medium blue */
 h4 { font-size: 16px; color: #333333; }
 h5 { font-size: 12px; color: #000000; font-style: normal; }
 h6 { font-size: 10px; color: #999999; }
+
+p { text-align: justify; }
 
 hr {
     background: none repeat scroll 0 0 #999999;
@@ -448,7 +450,8 @@ div.search-form
     width: 715px;
 }
 
-#about .title {
+#about h1 {
+    margin-bottom: 1em;
 }
 
 #about .title hr {
@@ -518,4 +521,89 @@ div.search-form
 
 #invest p {
     text-align: justify;
+}
+
+#entrepreneur  {
+    width: 715px;
+}
+
+#entrepreneur h1 {
+    margin-bottom: 0.5em;
+}
+
+#entrepreneur #partner-heading {
+    margin-bottom: 0;
+}
+
+#entrepreneur #partner-subheading {
+    margin-left: 170px;
+    margin-bottom: 1em;
+}
+
+#entrepreneur #success-stories {
+    margin-bottom: 1em;
+}
+
+#educate {
+    width: 715px;
+}
+
+#educate #edu-title {
+    margin-bottom: 0;
+}
+
+#educate #edu-subtitle {
+    margin-left: 170px;
+    margin-bottom: 1em;
+}
+
+#educate #edu-text {
+    margin-top: 1em;
+}
+
+#educate #bb-box {
+}
+
+#educate #bb-selector {
+    float: left;
+    position: relative;
+    top: 10px;
+    width: 200px;
+    margin-bottom: 50px;
+}
+
+#educate #bb-selector .options {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+#educate #bb-selector .options div {
+    color: #999999;
+    cursor: pointer;
+}
+
+#educate #bb-selector .options div.active, #educate #bb-selector .options div:hover {
+    color: #333333;
+    font-weight: bold;
+}
+
+#educate #bb-selector .options div.active {
+    text-decoration: underline;
+}
+
+#educate #blackboard {
+    position: relative;
+    background: url(/images/bb.png) top right no-repeat;
+    height: 300px;
+    margin-left: 200px;
+}
+
+#educate #blackboard.loading {
+    background: url(/images/bb-loading.png) top right no-repeat;
+}
+
+#educate #blackboard #bb-video {
+    position: absolute;
+    top: 19px;
+    left: 34px;
 }

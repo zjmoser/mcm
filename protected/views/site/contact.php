@@ -3,13 +3,10 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
+$this->pageTitle='Moser Capital | Contact';
 ?>
 
-<h1>Contact Us</h1>
+<h1>CONTACT US</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
