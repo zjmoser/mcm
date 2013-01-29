@@ -84,6 +84,11 @@ class SiteController extends Controller
 		$this->render('educate');
     }
 
+    public function actionDisclaimer()
+    {
+		$this->render('disclaimer');
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */

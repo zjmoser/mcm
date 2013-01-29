@@ -64,8 +64,7 @@
                     ),
                     array(
                         'label'=>'DISCLAIMER',
-                        'url'=>array('/site/page',
-                        'view'=>'disclaimer')
+                        'url'=>array('/site/disclaimer')
                     ),
                     #array(
                     #    'label'=>'LOGIN',
@@ -87,7 +86,7 @@
 
     <div id="main">
         <div id="mission-statement">
-            <p class="quiet">At Moser Capital Management we are dedicated to educating society about the benefits and risks involved in gaining exposure to financial markets. Our services include private equity management, entrepreneur partnership and financial education.</p>
+            <p class="quiet">At Moser Capital Management we are dedicated to educating society about the benefits and risks involved in gaining exposure to financial markets. Our services include asset management, entrepreneur partnership and financial education.</p>
         </div>
 
         <div id="banner-box">

@@ -62,6 +62,10 @@ hr.break {
     font-family: "Eras Medium ITC", "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
+#mission-statement p {
+    text-align: inherit;
+}
+
 #content
 {
     float: left;
